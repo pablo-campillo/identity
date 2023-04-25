@@ -10,6 +10,16 @@ The main entity is the user who can be registered by themself or by another user
 
 As V1PD I want to **register a new user**.
 
+## Content
+
+- **Makefile:** contains useful commands for working with the project.
+- **CHANGELOG.md:** file where changes for each version are annotated.
+- **docker-compose.yml:** setup and environment with all required services (Postgres).
+- **src:** directory with source code.
+- **test:** directory with the tests.
+- **alembic.ini:** configuration file of the database version tool (Alembic)
+- **Dockerfile:** definition of the container where the service runs.
+
 # Requirements
 
 ## Poetry Installation
