@@ -1,4 +1,5 @@
-# Introduction
+Introduction
+============
 
 This project aims at being a reference of how a Web API must be designed and implementd using Version 1 best practices.
 
@@ -6,11 +7,13 @@ This project aims at being a reference of how a Web API must be designed and imp
 
 The main entity is the user who can be registered by themself or by another user who owns proper privileges.
 
-## Web API User stories
+Web API User stories
+--------------------
 
 As V1PD I want to **register a new user**.
 
-## Content
+Content
+-------
 
 - **Makefile:** contains useful commands for working with the project.
 - **CHANGELOG.md:** file where changes for each version are annotated.
@@ -20,57 +23,69 @@ As V1PD I want to **register a new user**.
 - **alembic.ini:** configuration file of the database version tool (Alembic)
 - **Dockerfile:** definition of the container where the service runs.
 
-# Requirements
+Requirements
+============
 
-## Poetry Installation
+Poetry Installation
+-------------------
 
 Type the following in a linux terminal:
-```shell
-curl -sSL https://install.python-poetry.org | python3 -
-```
+
+.. code-block:: shell
+
+    curl -sSL https://install.python-poetry.org | python3 -
+
 
 Update the PATH environment variable:
-```shell
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-```
+
+.. code-block:: shell
+
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+
 
 Logout and in and check poetry's version:
 
-```shell
-$ poetry --version
-Poetry (version 1.4.2)
-```
+.. code-block:: shell
+
+    $ poetry --version
+    Poetry (version 1.4.2)
 
 The project was created using the following command (use it just for new projects from scratch):
 
-```shell
-poetry new --src identity
-```
+.. code-block:: shell
+
+    poetry new --src identity
 
 
-# bitacora
 
-```shell
-poetry add fastapi
-poetry add "uvicorn[standard]"
-poetry add python-multipart
-poetry add "python-jose[cryptography]"
-poetry add "passlib[bcrypt]"
-poetry add sqlalchemy[asyncio]
-poetry add asyncpg
-poetry add python-decouple
-poetry add --group dev alembic
-poetry add --group dev pytest
-poetry add --group dev pytest-mock
-poetry add --group dev httpx
-```
+bitacora
+========
 
-## Alembic
+.. code-block:: shell
 
-```shell
-alembic init -t async src/identity/adapters/db/migrations
-```
+    poetry add fastapi
+    poetry add "uvicorn[standard]"
+    poetry add python-multipart
+    poetry add "python-jose[cryptography]"
+    poetry add "passlib[bcrypt]"
+    poetry add sqlalchemy[asyncio]
+    poetry add asyncpg
+    poetry add python-decouple
+    poetry add --group dev alembic
+    poetry add --group dev pytest
+    poetry add --group dev pytest-mock
+    poetry add --group dev httpx
+    poetry add --group dev sphinx
 
-```shell
-alembic revision --autogenerate -m 'adds user table'
-```
+
+Alembic
+-------
+
+.. code-block:: shell
+
+    alembic init -t async src/identity/adapters/db/migrations
+
+
+.. code-block:: shell
+
+    alembic revision --autogenerate -m 'adds user table'

@@ -1,3 +1,5 @@
+"""Module that contains classes for managing serialization of users"""
+
 import abc
 from typing import List, Union
 from pydantic import parse_obj_as
@@ -9,28 +11,66 @@ from identity.adapters.db.tables import users as db_users
 
 
 class UsersAbstractRepository(abc.ABC):
+    """Abstract class that provides methods for managing users"""
+
     @abc.abstractmethod
     async def add_user(self, user: User) -> User:
+        """Adds a new user
+
+        :param user: user entity to be added
+        :type user: User
+        :return: the user added
+        :rtype: User
+        """
         pass
 
     @abc.abstractmethod
     async def update_user(self, user: User) -> User:
+        """Updates all attributes of an user
+
+        :param user: User to be updated
+        :type user: User
+        :return: the updated user
+        :rtype: User
+        """
         pass
 
     @abc.abstractmethod
     async def get_user(self, email: str) -> User:
+        """Gets a user by email
+
+        :param email: email address of the user
+        :type email: str
+        :return: user requested
+        :rtype: User
+        """
         pass
 
     @abc.abstractmethod
     async def list_users(self) -> List[User]:
+        """List all users
+
+        :return: a list with all users stored
+        :rtype: List[User]
+        """
         pass
 
     @abc.abstractmethod
-    async def list_paginated_users(page, page_size) -> Page[User]:
+    async def list_paginated_users(page: int, page_size: int) -> Page[User]:
+        """Gets users by chunks
+
+        :param page: number of page, min valid value is 1.
+        :type page: int
+        :param page_size: Number of users per page, min valid value is 1.
+        :type page_size: int
+        :return: a Page object that contains a list of users
+        :rtype: Page[User]
+        """
         pass
 
 
 class UsersSqlAlchemyRepository(UsersAbstractRepository):
+    """Repository for managing users in a database using sqlalchemy"""
     def __init__(self, session):
         self.session = session
 
