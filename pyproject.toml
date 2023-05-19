@@ -30,6 +30,7 @@ sphinx = "^7.0.0"
 sphinx-docs-theme = "^1.0.7"
 python-docs-theme = "^2023.3.1"
 ruff = "^0.0.269"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]

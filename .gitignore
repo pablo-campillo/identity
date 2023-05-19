@@ -5,3 +5,5 @@ __pycache__
 _build
 .idea
 .ruff_cache
+.coverage
+coverage.xml
