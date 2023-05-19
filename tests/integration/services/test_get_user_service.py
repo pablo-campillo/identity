@@ -1,7 +1,8 @@
 import pytest
 
 from identity.services.uow.users import UsersSqlAlchemyUnitOfWork
-from identity.services.users import new_user, get_user, UserDoesNotExist
+from identity.services.users import new_user, get_user
+from identity.services.exceptions import UserDoesNotExistException
 
 @pytest.mark.asyncio
 async def test_get_user_service(session_maker):
@@ -26,5 +27,5 @@ async def test_get_user_service_user_does_not_exist_exception(session_maker):
     email = 'petete@version1.com'
     pw = 'mypw'
 
-    with pytest.raises(UserDoesNotExist):
+    with pytest.raises(UserDoesNotExistException):
         await get_user(email, uow)

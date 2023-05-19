@@ -1,7 +1,9 @@
 import pytest
 
 from identity.services.uow.users import UsersSqlAlchemyUnitOfWork
-from identity.services.users import new_user, UserAlreadyExists, InvalidEmailFormat
+from identity.services.users import new_user
+from identity.services.exceptions import UserAlreadyExistsException, InvalidEmailFormatException
+
 
 @pytest.mark.asyncio
 async def test_add_user_service(session_maker):
@@ -25,7 +27,7 @@ async def test_add_user_service_user_already_exist_exception(session_maker):
     pw = 'mypw'
     user = await new_user(email, pw, uow)
 
-    with pytest.raises(UserAlreadyExists):
+    with pytest.raises(UserAlreadyExistsException):
         await new_user(email, pw, uow)
 
 
@@ -35,5 +37,5 @@ async def test_add_user_service_invalid_email(session_maker):
 
     email = 'petete'
     pw = 'mypw'
-    with pytest.raises(InvalidEmailFormat):
+    with pytest.raises(InvalidEmailFormatException):
         user = await new_user(email, pw, uow)
