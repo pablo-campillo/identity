@@ -13,7 +13,9 @@ pytest:
   stage: test
   image: python:3.11
   before_script:
-    - pip install pytest pytest-cov pytest-mock pytest-asyncio
+    - pip install poetry
+    - poetry install
+    - source `poetry env info --path`/bin/activate
   script:
     - pytest -v --cov=src --cov-report xml --cov-report term
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
