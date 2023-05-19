@@ -29,6 +29,7 @@ httpx = "^0.24.0"
 sphinx = "^7.0.0"
 sphinx-docs-theme = "^1.0.7"
 python-docs-theme = "^2023.3.1"
+ruff = "^0.0.269"
 
 [build-system]
 requires = ["poetry-core"]
